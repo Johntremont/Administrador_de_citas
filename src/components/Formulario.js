@@ -1,13 +1,17 @@
 import React, { Fragment, useState } from "react";
+import uuid from "uuid/v4";
 
-const Formulario = () => {
+const Formulario = ({ crearCita }) => {
   // Crear State de Citas
   const [cita, actualizarCita] = useState({
     mascota: "",
+    propietario: "",
     fecha: "",
     hora: "",
     sintomas: ""
   });
+
+  const [error, actualizarError] = useState(false);
 
   // Funcion que se ejecuta cada vez que el usuario escribe en un imput
   const actualizarState = e => {
@@ -25,8 +29,23 @@ const Formulario = () => {
     e.preventDefault();
 
     // Validar
+    if (
+      mascota.trim() === "" ||
+      propietario.trim() === "" ||
+      fecha.trim() === "" ||
+      hora.trim() === "" ||
+      sintomas.trim() === ""
+    ) {
+      actualizarError(true);
+      return;
+    }
+    // Eliminar el mensaje previo
+    actualizarError(false);
 
     //  Asignar un ID
+    // cita.id = 20;
+    cita.id = uuid();
+    console.log(cita);
 
     // Crear la Cita
 
@@ -35,7 +54,11 @@ const Formulario = () => {
 
   return (
     <Fragment>
-      <h2>Crear cita</h2>
+      <h2>Crear Cita</h2>
+
+      {error ? (
+        <p className="alerta-error">Todos los campos son Requeridos</p>
+      ) : null}
 
       <form onSubmit={submitCita}>
         <label>Nombre Mascota</label>
@@ -53,7 +76,7 @@ const Formulario = () => {
           type="text"
           name="propietario"
           className="u-full-width"
-          placeholder="Nombre del Dueño"
+          placeholder="Nombre del Propietario"
           onChange={actualizarState}
           value={propietario}
         />
