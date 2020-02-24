@@ -7,7 +7,7 @@ function App() {
 
   // Funcion que tome las citas y agregue la nueva
   const crearCita = cita => {
-    console.log(cita);
+    guardarCitas([...citas, cita]);
   };
 
   return (

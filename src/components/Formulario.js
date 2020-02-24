@@ -43,11 +43,10 @@ const Formulario = ({ crearCita }) => {
     actualizarError(false);
 
     //  Asignar un ID
-    // cita.id = 20;
     cita.id = uuid();
-    console.log(cita);
 
     // Crear la Cita
+    crearCita(cita);
 
     // Reiniciar el form
   };
