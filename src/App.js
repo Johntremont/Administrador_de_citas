@@ -34,7 +34,7 @@ function App() {
 
   //mensaje condicional
   const titulo =
-    citas.length == 0 ? "Aún no tienes citas" : "Administra tus citas";
+    citas.length === 0 ? "Aún no tienes citas" : "Administra tus citas";
 
   return (
     <Fragment>
