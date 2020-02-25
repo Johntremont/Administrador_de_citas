@@ -10,7 +10,7 @@ function App() {
   }
 
   // Arreglo de citas
-  const [citas, guardarCitas] = useState([citasIniciales]);
+  const [citas, guardarCitas] = useState(citasIniciales);
 
   // Use Effect para realizar ciertas operaciones cuando el state cambia
   useEffect(() => {
